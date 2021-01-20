@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/giazzi53/node-survey-api#readme",
   "dependencies": {
-    "git-commit-msg-linter": "^3.0.0"
+    "@types/node": "^14.14.22",
+    "git-commit-msg-linter": "^3.0.0",
+    "typescript": "^4.1.3"
   }
 }
