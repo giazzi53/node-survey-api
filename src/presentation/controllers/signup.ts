@@ -1,14 +1,15 @@
 import { MissingParamError } from '../errors/misssing-param-error'
 import { badRequest } from '../helpers/http-helper'
-import { HttpRequest, HttpResponse } from '../protocols/http'
+import { SignUpRequest } from '../interfaces/signUp/signUpRequest'
+import { HttpResponse } from '../protocols/http'
+import { Body } from 'tsoa'
 
 export class SignUpController {
-  public handle (httpRequest: HttpRequest): HttpResponse {
-    if (!httpRequest.body.name) {
-      return badRequest(new MissingParamError('name'))
-    }
-    if (!httpRequest.body.email) {
-      return badRequest(new MissingParamError('email'))
+  public signUp (@Body() signUpRequest: SignUpRequest): HttpResponse {
+    for (const field in signUpRequest) {
+      if (!signUpRequest[field]) {
+        return badRequest(new MissingParamError(field))
+      }
     }
   }
 }
