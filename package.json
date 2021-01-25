@@ -13,7 +13,9 @@
   },
   "lint-staged": {
     "src/**/*.ts": [
-      "eslint . --fix", "git add"
+      "eslint . --fix",
+      "npm run test",
+      "git add"
     ]
   },
   "repository": {
